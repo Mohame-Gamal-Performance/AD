@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdPulse AI - Dashboard</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/recharts/umd/Recharts.js"></script>
+    <script src="https://unpkg.com/lucide-react"></script>
+    <style>body { margin: 0; background: #F8FAFF; font-family: sans-serif; }</style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } = Recharts;
+
+        // نسخة مبسطة وشغالة فوراً من كودك الاحترافي
+        const App = () => {
+            return (
+                <div className="min-h-screen bg-slate-950 text-white p-8">
+                    <div className="max-w-6xl mx-auto">
+                        <header className="flex justify-between items-center mb-12 border-b border-slate-800 pb-6">
+                            <div>
+                                <h1 className="text-3xl font-bold text-blue-500">AdPulse AI</h1>
+                                <p className="text-slate-400 text-sm">Media Buying Intelligence</p>
+                            </div>
+                            <div className="bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full text-sm font-bold border border-blue-500/30">
+                                ROAS: 2.44x
+                            </div>
+                        </header>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                                <div className="text-slate-500 text-xs mb-1 uppercase tracking-wider">Total Spend</div>
+                                <div className="text-3xl font-bold">$14,280.40</div>
+                                <div className="text-green-500 text-xs mt-2">↑ 12% vs last month</div>
+                            </div>
+                            <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                                <div className="text-slate-500 text-xs mb-1 uppercase tracking-wider">Net Revenue</div>
+                                <div className="text-3xl font-bold">$34,844.17</div>
+                                <div className="text-green-500 text-xs mt-2">↑ 8.4% vs last month</div>
+                            </div>
+                            <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                                <div className="text-slate-500 text-xs mb-1 uppercase tracking-wider">Total ROAS</div>
+                                <div className="text-3xl font-bold text-blue-400">2.44x</div>
+                                <div className="text-red-400 text-xs mt-2">↓ 2.1% vs last month</div>
+                            </div>
+                        </div>
+
+                        <div className="bg-slate-900 p-8 rounded-3xl border border-slate-800 text-center py-20">
+                            <h2 className="text-2xl font-bold mb-4">Dashboard Live ✅</h2>
+                            <p className="text-slate-400 mb-8">الموقع شغال دلوقتي يا محمد! ده الهيكل الأساسي لمشروعك مرفوع صح.</p>
+                            <button className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-xl font-bold transition-all">
+                                ابدأ تحليل البيانات
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
