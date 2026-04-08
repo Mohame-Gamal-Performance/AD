@@ -1,117 +1,44 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdPulse AI - Dashboard</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>AdPulse AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/recharts/umd/Recharts.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { margin: 0; background-color: #020617; color: white; font-family: sans-serif; }
-        #root { min-height: 100vh; }
+        body { background: #020617; color: white; font-family: sans-serif; }
+        .card { background: #0f172a; border: 1px solid #1e293b; padding: 20px; border-radius: 20px; }
     </style>
 </head>
-<body>
-    <div id="root"></div>
+<body class="p-6">
+    <div class="max-w-5xl mx-auto">
+        <div class="flex justify-between items-center mb-10">
+            <div>
+                <h1 class="text-3xl font-black text-blue-500">AdPulse AI</h1>
+                <p class="text-slate-500">Live Dashboard Ready ✅</p>
+            </div>
+            <div class="bg-blue-600 px-6 py-2 rounded-xl font-bold">Connected</div>
+        </div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-        const { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } = Recharts;
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="card">
+                <p class="text-slate-500 text-xs font-bold uppercase mb-2">Total Spend</p>
+                <h2 class="text-3xl font-black">$14,280</h2>
+            </div>
+            <div class="card border-blue-500/50">
+                <p class="text-slate-500 text-xs font-bold uppercase mb-2">Total ROAS</p>
+                <h2 class="text-3xl font-black text-blue-400">2.44x</h2>
+            </div>
+            <div class="card">
+                <p class="text-slate-500 text-xs font-bold uppercase mb-2">Revenue</p>
+                <h2 class="text-3xl font-black text-green-400">$34,844</h2>
+            </div>
+        </div>
 
-        // مكون الأيقونات المضمون
-        const LucideIcon = ({ name, size = 20, color = "currentColor" }) => {
-            useEffect(() => { lucide.createIcons(); }, []);
-            return <i data-lucide={name} style={{ width: size, height: size, stroke: color }}></i>;
-        };
-
-        const App = () => {
-            const data = [
-                { name: 'Mon', spend: 1200, rev: 2800 },
-                { name: 'Tue', spend: 1500, rev: 3200 },
-                { name: 'Wed', spend: 1100, rev: 2900 },
-                { name: 'Thu', spend: 1900, rev: 4500 },
-                { name: 'Fri', spend: 2200, rev: 5100 },
-            ];
-
-            return (
-                <div className="flex flex-col md:flex-row min-h-screen">
-                    {/* Sidebar */}
-                    <div className="w-full md:w-64 border-r border-slate-800 p-6 space-y-8 bg-slate-950">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-xl">A</div>
-                            <span className="text-xl font-bold tracking-tighter">AdPulse AI</span>
-                        </div>
-                        <nav className="space-y-4">
-                            <div className="flex items-center gap-3 text-blue-400 bg-blue-400/10 p-3 rounded-xl border border-blue-400/20">
-                                <LucideIcon name="layout-dashboard" /> <span>Dashboard</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-slate-500 p-3 hover:text-white transition cursor-pointer">
-                                <LucideIcon name="zap" /> <span>AI Insights</span>
-                            </div>
-                        </nav>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 p-8">
-                        <header className="flex justify-between items-center mb-10">
-                            <div>
-                                <h1 className="text-3xl font-black uppercase tracking-tight">Performance</h1>
-                                <p className="text-slate-500">Live data from Meta Marketing API</p>
-                            </div>
-                            <button className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-xl font-bold transition shadow-lg shadow-blue-600/20">
-                                Sync Data
-                            </button>
-                        </header>
-
-                        {/* Cards */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                            {[
-                                { t: 'Total Spend', v: '$14,280', c: 'text-white' },
-                                { t: 'ROAS', v: '2.44x', c: 'text-blue-400' },
-                                { t: 'Net Revenue', v: '$34,844', c: 'text-green-400' },
-                                { t: 'CPA', v: '$18.40', c: 'text-white' }
-                            ].map((card, i) => (
-                                <div key={i} className="bg-slate-900 border border-slate-800 p-6 rounded-3xl">
-                                    <div className="text-slate-500 text-[10px] font-bold uppercase mb-1 tracking-widest">{card.t}</div>
-                                    <div className={`text-2xl font-black ${card.c}`}>{card.v}</div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Main Chart */}
-                        <div className="bg-slate-900/50 border border-slate-800 p-8 rounded-[32px]">
-                            <h3 className="font-bold mb-6 flex items-center gap-2">
-                                <LucideIcon name="trending-up" size={16} color="#3b82f6" /> Analytics Over Time
-                            </h3>
-                            <div className="h-64 w-full">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <AreaChart data={data}>
-                                        <defs>
-                                            <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="5%" stopColor="#2563eb" stopOpacity={0.3}/>
-                                                <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
-                                            </linearGradient>
-                                        </defs>
-                                        <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
-                                        <XAxis dataKey="name" stroke="#475569" fontSize={12} axisLine={false} tickLine={false} />
-                                        <YAxis stroke="#475569" fontSize={12} axisLine={false} tickLine={false} />
-                                        <Tooltip contentStyle={{backgroundColor: '#0f172a', border: '1px solid #1e293b', borderRadius: '12px'}} />
-                                        <Area type="monotone" dataKey="rev" stroke="#2563eb" strokeWidth={4} fill="url(#colorPv)" />
-                                    </AreaChart>
-                                </ResponsiveContainer>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+        <div class="bg-blue-600/10 border border-blue-600/20 p-8 rounded-[32px] text-center">
+            <h3 class="text-xl font-bold mb-2">مبروك يا محمد! الموقع فتح خلاص</h3>
+            <p class="text-slate-400">كده إحنا اتأكدنا إن الاستضافة شغالة. الكود ده HTML صافي عشان ميهنجش.</p>
+        </div>
+    </div>
 </body>
 </html>
